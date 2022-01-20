@@ -68,8 +68,8 @@ class TemperatureSensor(SensorBase):
         return f"{self._kldr.get_transceiver_id()}_temp{self._sensornum}"
 
     @property
-    def device_state_attributes(self):
-        """Return the state attributes of the device."""
+    def extra_state_attributes(self):
+        """Return the extra state attributes of the device."""
         attr = {}
         attr["max_temp"] = f"{self._kldr._service.current.values[f'Temp{self._sensornum}Max']:.1f}"
         attr["signal_strength"] = self._kldr._service.current.values['SignalQuality']
@@ -113,8 +113,8 @@ class HumiditySensor(SensorBase):
         return f"{self._kldr.get_transceiver_id()}_humidity{self._sensornum}"
 
     @property
-    def device_state_attributes(self):
-        """Return the state attributes of the device."""
+    def extra_state_attributes(self):
+        """Return the extra state attributes of the device."""
         attr = {}
         attr["max_humidity"] = f"{self._kldr._service.current.values[f'Humidity{self._sensornum}Max']:.1f}"
         attr["signal_strength"] = self._kldr._service.current.values['SignalQuality']
